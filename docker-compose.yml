@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  fastapi:
+    build: .
+    container_name: fastapi_app
+  
+    environment:
+      - OPENSEARCH_URL=http://localhost:9200
+    ports:
+      - "8000:8000"
+    networks:
+      - opensearch-net
+
+networks:
+  opensearch-net:
+    external: true
